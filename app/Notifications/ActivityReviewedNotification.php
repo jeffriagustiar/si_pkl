@@ -33,7 +33,7 @@ class ActivityReviewedNotification extends Notification
             'status' => $this->activity->status,
             'teacher_name' => auth()->user()->name,
             'activity_date' => $this->activity->activity_date,
-            'message' => 'Your activity on ' . $this->activity->activity_date . ' has been ' . $this->activity->status . '.',
+            'message' => 'Kegiatan Anda pada tanggal ' . $this->activity->activity_date . ' telah ' . ($this->activity->status == 'approved' ? 'disetujui' : 'ditolak/perlu revisi') . '.',
         ];
     }
 }

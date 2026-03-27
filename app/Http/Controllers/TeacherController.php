@@ -52,6 +52,6 @@ class TeacherController extends Controller
 
         $activity->student->notify(new ActivityReviewedNotification($activity));
 
-        return redirect()->route('teacher.dashboard')->with('success', 'Activity reviewed successfully.');
+        return redirect()->route('teacher.dashboard')->with('success', 'Kegiatan berhasil ditinjau.');
     }
 }

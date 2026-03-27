@@ -37,13 +37,13 @@ class ActivityController extends Controller
             'status' => 'pending',
         ]);
 
-        return redirect()->route('student.activities.index')->with('success', 'Activity uploaded successfully.');
+        return redirect()->route('student.activities.index')->with('success', 'Kegiatan berhasil diunggah.');
     }
 
     public function edit(Activity $activity)
     {
         if ($activity->student_id !== auth()->id() || $activity->status !== 'pending') {
-            abort(403, 'You can only edit pending activities.');
+            abort(403, 'Anda hanya dapat mengedit kegiatan yang masih tertunda (pending).');
         }
         return view('student.activities.edit', compact('activity'));
     }
@@ -69,7 +69,7 @@ class ActivityController extends Controller
 
         $activity->update($data);
 
-        return redirect()->route('student.activities.index')->with('success', 'Activity updated successfully.');
+        return redirect()->route('student.activities.index')->with('success', 'Kegiatan berhasil diperbarui.');
     }
 
     public function destroy(Activity $activity)
@@ -81,6 +81,6 @@ class ActivityController extends Controller
         Storage::disk('public')->delete($activity->photo_path);
         $activity->delete();
 
-        return redirect()->route('student.activities.index')->with('success', 'Activity deleted successfully.');
+        return redirect()->route('student.activities.index')->with('success', 'Kegiatan berhasil dihapus.');
     }
 }
